@@ -30,6 +30,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //@@46_03:40 - mutator
+        // Upon registration, bycrypt the password
+        // "setPasswordAttribute" need to follow the naming convention "set", "Password", "Attribute".
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);

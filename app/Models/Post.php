@@ -11,8 +11,11 @@ class Post extends Model
 
     protected $with = ['category', 'author'];
 
+    //@@38_03:55_Used as filter("scope" + name of method) in PostController.php
+        //$query passed by laravel automatically, $filters passed by controller
     public function scopeFilter($query, array $filters)
     {
+        //@@38_08:50 trigger this "when" we have a "search" query
         $query->when($filters['search'] ?? false, fn($query, $search) =>
             $query->where(fn($query) =>
                 $query->where('title', 'like', '%' . $search . '%')
@@ -21,6 +24,7 @@ class Post extends Model
         );
 
         $query->when($filters['category'] ?? false, fn($query, $category) =>
+            //@@39_07:41 give post having that category, then having the slug
             $query->whereHas('category', fn ($query) =>
                 $query->where('slug', $category)
             )

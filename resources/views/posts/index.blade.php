@@ -5,6 +5,7 @@
         @if ($posts->count())
             <x-posts-grid :posts="$posts" />
 
+{{--            //@@44 Once you call paginate in PostController, you have access to links() method to create links--}}
             {{ $posts->links() }}
         @else
             <p class="text-center">No posts yet. Please check back later.</p>

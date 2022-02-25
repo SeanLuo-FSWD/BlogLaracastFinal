@@ -24,6 +24,7 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
+            // @@54 this creates a new post and new user in the database.
             'post_id' => Post::factory(),
             'user_id' => User::factory(),
             'body' => $this->faker->paragraph()

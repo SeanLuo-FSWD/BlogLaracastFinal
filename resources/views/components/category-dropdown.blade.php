@@ -12,6 +12,8 @@
     </x-dropdown-item>
 
     @foreach ($categories as $category)
+{{--        //@@42_update the search query string everytime on search, but prevent duplicate adding of category--}}
+{{--        "http_build_query" accept an array like ['name' => 'john'], and turn it into a query (name=john)--}}
         <x-dropdown-item
             href="/?category={{ $category->slug }}&{{ http_build_query(request()->except('category', 'page')) }}"
             :active='request()->is("categories/{$category->slug}")'

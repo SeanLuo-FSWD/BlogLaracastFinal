@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //@@56_08:01 Used to unguard[] all models so you don't have to do it individually.
         Model::unguard();
     }
 }

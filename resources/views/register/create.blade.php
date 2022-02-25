@@ -4,6 +4,7 @@
             <h1 class="text-center font-bold text-xl">Register!</h1>
 
             <form method="POST" action="/register" class="mt-10">
+{{--                //@@44 include an hidden input tag with csrf token --}}
                 @csrf
 
                 <div class="mb-6">
@@ -17,10 +18,12 @@
                            type="text"
                            name="name"
                            id="name"
+{{--                           @@47, so that we don't lose previous input in case of error message--}}
                            value="{{ old('name') }}"
                            required
                     >
 
+{{--                    //@@47 Laravel built-in error display. Must match "name" above. "$message" is built in variable --}}
                     @error('name')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror

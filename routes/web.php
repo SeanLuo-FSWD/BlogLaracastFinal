@@ -11,10 +11,12 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
 Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
 
+//@@49 'guest' - Only a guest can access this page, if you are signed in, you won't see it. See "app/Http/Kernel.php"
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
 
 Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 
+//@@49 'auth' - Inverse of 'guest', so that only authenticated can access
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');

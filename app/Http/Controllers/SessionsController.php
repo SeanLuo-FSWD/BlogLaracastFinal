@@ -18,12 +18,16 @@ class SessionsController extends Controller
             'password' => 'required'
         ]);
 
+//        dd($attributes);
+
+        //@@50 "attempts" does the signin process
         if (! auth()->attempt($attributes)) {
             throw ValidationException::withMessages([
                 'email' => 'Your provided credentials could not be verified.'
             ]);
         }
 
+        //@@50 regenerate the session to prevent the Session fixation attack
         session()->regenerate();
 
         return redirect('/')->with('success', 'Welcome Back!');

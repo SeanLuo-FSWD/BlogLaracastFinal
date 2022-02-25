@@ -9,6 +9,8 @@ class PostCommentsController extends Controller
 {
     public function store(Post $post)
     {
+        //@@56 to see $post body:
+            // dd($post);
         request()->validate([
             'body' => 'required'
         ]);
@@ -18,6 +20,7 @@ class PostCommentsController extends Controller
             'body' => request('body')
         ]);
 
+        //@@56 Redirect back to previous page
         return back();
     }
 }

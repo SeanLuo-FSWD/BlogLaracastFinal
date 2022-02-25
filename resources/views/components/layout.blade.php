@@ -28,6 +28,7 @@
             </div>
 
             <div class="mt-8 md:mt-0 flex items-center">
+{{--                @@49_06:11 variable provided by middleware('auth');--}}
                 @auth
                     <span class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}!</span>
 
