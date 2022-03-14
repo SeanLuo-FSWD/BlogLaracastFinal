@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -24,4 +25,5 @@ class PostController extends Controller
             'post' => $post
         ]);
     }
+
 }

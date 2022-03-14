@@ -9,6 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
+    // Always include these when getting queried
     protected $with = ['category', 'author'];
 
     //@@38_03:55_Used as filter("scope" + name of method) in PostController.php
@@ -49,6 +50,7 @@ class Post extends Model
 
     public function author()
     {
+        // Had to specify 'user_id' here cuz the name author(singular) does not exist as an attribute.
         return $this->belongsTo(User::class, 'user_id');
     }
 }

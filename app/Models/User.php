@@ -38,7 +38,8 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($password);
     }
 
-    public function posts()
+    public function posts() // This name convention matters as Laravel looks for matching id (post_id)
+    // Notice it's posts(plural), but singular on the other side (author)
     {
         return $this->hasMany(Post::class);
     }
