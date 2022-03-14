@@ -25,6 +25,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
 //        Comment::factory(5)->create();
-        
+
     }
 }
